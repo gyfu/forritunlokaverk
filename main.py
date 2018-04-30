@@ -28,31 +28,69 @@ def hrutaSmidur(skra):
     
 def skipta(listi):
         teljari = 0
-        eg = []
+
         talva = []
-        badir = []
+
         for x in listi:
                 teljari += 1
-        if teljari %2 == 0:
-                talva.append(x)
-        else:
-                eg.append(x)
-        badir.append(eg)
-        badir.append(talva)
-        return badir
+                if teljari %2 == 0:
+                        talva.append(x)
+        for i in listi:
+                if i in talva:
+                        listi.remove(i)
+
+        return talva
         
 
 def leikur(badir):
-        print("gagagagaga")
+        print(badir)
 
 
-hrutar = hrutaSmidur("hrutaspil.txt")
-hrutur = hrutar[0]
+eg = hrutaSmidur("hrutaspil.txt")
+hrutur = eg[0]
 hrutur.skodaNafn()
 
-badir = skipta(hrutar)
+talva = skipta(eg)
 
-leikur(badir)
+
+leikur(talva)
+print("\nhin spilin\n")
+print(eg)
+
+############################################### skoda spilin i hvorum lista
+teljari = -1
+for x in eg:
+        teljari += 1
+        eg[teljari].skodaNafn()
+
+print("\nhin spilin\n")
+teljari = -1
+for x in talva:
+        teljari += 1
+        talva[teljari].skodaNafn()
+############################################### skoda spilin i hvorum lista
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
