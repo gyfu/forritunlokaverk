@@ -13,6 +13,34 @@ class Hrutar():
                 self.malir = malir
         def skodaNafn(self):
                 print(self.nafn)
+        def skodaEiginleika(self):
+                print("\n    1. Þyngd(kg):          ", self.thyngd)
+                print("    2. Mjólklagni dætra:   ", self.mjolk)
+                print("    3. Einkunn ullar:      ", self.ull)
+                print("    4. Fjöldi afkvæma:     ", self.afkvaemi)
+                print("    5. Einkunn læris:      ", self.laeri)
+                print("    6. Frjósemi:           ", self.frjosemi)
+                print("    7. Gerð/þykkt bakvöðva:", self.gerd)
+                print("    8. Einkunn fyrir malir:", self.malir)
+                print("--------------------------------")
+        def val(self, val):
+                if val == 1:
+                        return self.thyngd
+                elif val == 2:
+                        return self.mjolk
+                elif val == 3:
+                        return self.ull
+                elif val == 4:
+                        return self.afkvaemi
+                elif val == 5:
+                        return self.laeri
+                elif val == 6:
+                        return self.frjosemi
+                elif val == 7:
+                        return self.gerd
+                elif val == 8:
+                        return self.malir
+        
         
 def hrutaSmidur(skra):
         hrutar = []
@@ -42,8 +70,54 @@ def skipta(listi):
         return talva
         
 
-def leikur(badir):
-        print(badir)
+def leikur(eg, talva):
+        spila = 0
+        teljari = -1
+        obj1 = eg[0]
+        obj2 = talva[0]
+        while True:
+                print("--------------------------------")
+                if spila == 0:        #eg
+                        teljari += 1
+                        obj1.skodaNafn()
+                        obj1.skodaEiginleika()
+                        val = int(input("veldu eiginleika: "))
+                        print("\n")
+
+                        if val > 0 and val < 9:
+                                print(obj1.val(val))
+                                print(obj2.val(val))
+                                if val == 1:
+                                        print("þyngd")
+                                elif val == 2:
+                                        print("mjolk")
+                                elif val == 3:
+                                        print("ull")
+                                elif val == 4:
+                                        print("fjoldi")
+                                elif val == 5:
+                                        print("laeri")
+                                elif val == 6:
+                                        print("frjosemi")
+                                elif val == 7:
+                                        print("bak")
+                                elif val == 8:
+                                        print("malir") #kveikur er op
+                                        
+                                if obj1.val(val) > obj2.val(val):
+                                        print("eg fæ stigið")
+                                elif obj1.val(val) < obj2.val(val):
+                                        print("talvan fær stigið")
+                                else:
+                                        print("jafntefli")
+                        else:
+                                print("ekkert valið, veldu aftur")
+                        spila = 1
+
+                        
+                else:                   #talva
+                        
+                        spila = 0
 
 
 eg = hrutaSmidur("hrutaspil.txt")
@@ -53,7 +127,7 @@ hrutur.skodaNafn()
 talva = skipta(eg)
 
 
-leikur(talva)
+print(talva)
 print("\nhin spilin\n")
 print(eg)
 
@@ -69,6 +143,20 @@ for x in talva:
         teljari += 1
         talva[teljari].skodaNafn()
 ############################################### skoda spilin i hvorum lista
+
+print("\nleikur\n")
+leikur(eg, talva)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
