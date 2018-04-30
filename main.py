@@ -40,6 +40,7 @@ def skipta(listi):
         badir.append(eg)
         badir.append(talva)
         return badir
+
         
 
 def leikur(badir):
