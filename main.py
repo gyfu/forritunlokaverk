@@ -13,7 +13,7 @@ class Hrutar():
                 self.malir = malir
         def skodaNafn(self):
                 print(self.nafn)
-
+        
 def hrutaSmidur(skra):
         hrutar = []
         with open(skra, "r") as f:
@@ -25,14 +25,6 @@ def hrutaSmidur(skra):
         f.close
         random.shuffle(hrutar)	
         return hrutar
-<<<<<<< HEAD
-
-
-def leikur(badir):
-        print("gagagagaga")
-for x in hrutar:
-        x.skodaNafn()
-=======
     
 def skipta(listi):
         teljari = 0
@@ -53,7 +45,6 @@ def skipta(listi):
 def leikur(badir):
         print(badir)
 
->>>>>>> aa6b5339dfc113840a8260d9b073f61287d55cd3
 
 eg = hrutaSmidur("hrutaspil.txt")
 hrutur = eg[0]
@@ -78,19 +69,6 @@ for x in talva:
         teljari += 1
         talva[teljari].skodaNafn()
 ############################################### skoda spilin i hvorum lista
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
