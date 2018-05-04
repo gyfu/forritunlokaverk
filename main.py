@@ -42,7 +42,7 @@ class Hrutar():
                         return self.malir
         
         
-def hrutaSmidur(skra):
+def hrutaSmidur(skra):  #Býr til alla hrútana sem object
         hrutar = []
         with open(skra, "r") as f:
                 lines = f.readlines()
@@ -53,8 +53,8 @@ def hrutaSmidur(skra):
         f.close
         random.shuffle(hrutar)	
         return hrutar
-    
-def skipta(listi):
+  
+def skipta(listi):      #Skiptir öllum hrúta objectunum í tvo lista, eg og talva
         teljari = 0
 
         talva = []
@@ -68,17 +68,22 @@ def skipta(listi):
                         listi.remove(i)
 
         return talva
-        
+
+def skiptaSpilum(listix, listiy):       #Tekur fremsta spilið ú lista-x og færir það í lista-y
+        listiy.append(listix[0])
+        listix.remove(listix[0])
+
+             
 
 def leikur(eg, talva):
-        spila = 0
-        teljari = -1
+        spila = 0       #Segir til um hver á að gera, 0 = eg, 1 = tolva
+        #teljari = -1   #Teljari til að vita hve langur leikurinn hefur verið
         obj1 = eg[0]
         obj2 = talva[0]
         while True:
                 print("--------------------------------")
                 if spila == 0:        #eg
-                        teljari += 1
+                        #teljari += 1
                         obj1.skodaNafn()
                         obj1.skodaEiginleika()
                         val = int(input("veldu eiginleika: "))
@@ -106,8 +111,12 @@ def leikur(eg, talva):
                                         
                                 if obj1.val(val) > obj2.val(val):
                                         print("eg fæ stigið")
+                                        skiptaSpilum(talva, eg)
+                                        #print(talva, eg)
                                 elif obj1.val(val) < obj2.val(val):
                                         print("talvan fær stigið")
+                                        skiptaSpilum(eg, talva)
+                                        #print(talva, eg)
                                 else:
                                         print("jafntefli")
                         else:
@@ -120,28 +129,30 @@ def leikur(eg, talva):
                         spila = 0
 
 
-eg = hrutaSmidur("hrutaspil.txt")
-hrutur = eg[0]
-hrutur.skodaNafn()
+eg = hrutaSmidur("hrutar.txt")
+#hrutur = eg[0]
+#hrutur.skodaNafn()
 
 talva = skipta(eg)
 
-
+'''
 print(talva)
 print("\nhin spilin\n")
 print(eg)
-
+'''
 ############################################### skoda spilin i hvorum lista
+print("Mín spil\n")
 teljari = -1
 for x in eg:
         teljari += 1
         eg[teljari].skodaNafn()
 
-print("\nhin spilin\n")
+print("\nHin spilin\n")
 teljari = -1
 for x in talva:
         teljari += 1
         talva[teljari].skodaNafn()
+
 ############################################### skoda spilin i hvorum lista
 
 print("\nleikur\n")
