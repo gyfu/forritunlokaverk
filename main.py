@@ -78,22 +78,36 @@ def skiptaSpilum(listix, listiy):       #Tekur fremsta spilið ú lista-x og fæ
 def leikur(eg, talva):
         spila = 0       #Segir til um hver á að gera, 0 = eg, 1 = tolva
         #teljari = -1   #Teljari til að vita hve langur leikurinn hefur verið
-        obj1 = eg[0]
-        obj2 = talva[0]
+
         while True:
                 print("--------------------------------")
                 if spila == 0:        #eg
+                        obj1 = eg[0]
+                        obj2 = talva[0]
                         #teljari += 1
                         obj1.skodaNafn()
                         obj1.skodaEiginleika()
                         val = int(input("veldu eiginleika: "))
                         print("\n")
-
                         if val > 0 and val < 9:
                                 print(obj1.val(val))
                                 print(obj2.val(val))
                                 if val == 1:
                                         print("þyngd")
+                                        if obj1.val(val) > obj2.val(val):
+                                                print("eg fæ stigið")
+                                                skiptaSpilum(talva, eg)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        elif obj1.val(val) < obj2.val(val):
+                                                print("talvan fær stigið")
+                                                skiptaSpilum(eg, talva)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        else:
+                                                print("jafntefli")
                                 elif val == 2:
                                         print("mjolk")
                                 elif val == 3:
@@ -108,24 +122,11 @@ def leikur(eg, talva):
                                         print("bak")
                                 elif val == 8:
                                         print("malir") #kveikur er op
-                                        
-                                if obj1.val(val) > obj2.val(val):
-                                        print("eg fæ stigið")
-                                        skiptaSpilum(talva, eg)
-                                        #print(talva, eg)
-                                elif obj1.val(val) < obj2.val(val):
-                                        print("talvan fær stigið")
-                                        skiptaSpilum(eg, talva)
-                                        #print(talva, eg)
-                                else:
-                                        print("jafntefli")
+                                print(eg,"\n\n" ,talva)
                         else:
                                 print("ekkert valið, veldu aftur")
                         spila = 1
-
-                        
                 else:                   #talva
-                        
                         spila = 0
 
 
