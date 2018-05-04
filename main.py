@@ -13,6 +13,15 @@ class Hrutar():
                 self.malir = malir
         def skodaNafn(self):
                 print(self.nafn)
+        def skodaThyngd(self):
+                print(self.thyngd)
+        def keppa(self, other, val):
+                if self.val > other.val:
+                        return True
+                elif self.val < other.val:
+                        return False
+                else: 
+                        return 2
         
 def hrutaSmidur(skra):
         hrutar = []
@@ -40,34 +49,45 @@ def skipta(listi):
                         listi.remove(i)
 
         return talva
-        
+
+def keppa(obj1, obj2, val):
+        if obj1.val > obj2.val:
+                return True
+        elif obj1.val < obj2.val:
+                return False
+        else: 
+                print("Jafntefli")
+                return 2
 
 def leikur(badir):
         print(badir)
 
 
-eg = hrutaSmidur("hrutaspil.txt")
-hrutur = eg[0]
-hrutur.skodaNafn()
-
+eg = hrutaSmidur("hrutar.txt")
+#hrutur = eg[0]
+#hrutur.skodaNafn()
 talva = skipta(eg)
+eg[0].skodaThyngd()
+talva[0].skodaThyngd()
 
 
-leikur(talva)
-print("\nhin spilin\n")
-print(eg)
+
+
+#leikur(talva)
+#print("\nhin spilin\n")
+#print(eg)
 
 ############################################### skoda spilin i hvorum lista
-teljari = -1
-for x in eg:
-        teljari += 1
-        eg[teljari].skodaNafn()
+#teljari = -1
+#for x in eg:
+#        teljari += 1
+#        eg[teljari].skodaNafn()
 
-print("\nhin spilin\n")
-teljari = -1
-for x in talva:
-        teljari += 1
-        talva[teljari].skodaNafn()
+#print("\nhin spilin\n")
+#teljari = -1
+#for x in talva:
+#        teljari += 1
+#        talva[teljari].skodaNafn()
 ############################################### skoda spilin i hvorum lista
 
 
@@ -80,4 +100,4 @@ for x in talva:
 
 
 
-
+        
