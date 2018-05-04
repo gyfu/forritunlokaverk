@@ -71,6 +71,8 @@ def skipta(listi):      #Skiptir öllum hrúta objectunum í tvo lista, eg og ta
 
 def skiptaSpilum(listix, listiy):       #Tekur fremsta spilið ú lista-x og færir það í lista-y
         listiy.append(listix[0])
+        listiy.append(listiy[0])
+        listiy.remove(listiy[0])
         listix.remove(listix[0])
 
              
@@ -110,18 +112,116 @@ def leikur(eg, talva):
                                                 print("jafntefli")
                                 elif val == 2:
                                         print("mjolk")
+                                        if obj1.val(val) > obj2.val(val):
+                                                print("eg fæ stigið")
+                                                skiptaSpilum(talva, eg)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        elif obj1.val(val) < obj2.val(val):
+                                                print("talvan fær stigið")
+                                                skiptaSpilum(eg, talva)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        else:
+                                                print("jafntefli")
                                 elif val == 3:
                                         print("ull")
+                                        if obj1.val(val) > obj2.val(val):
+                                                print("eg fæ stigið")
+                                                skiptaSpilum(talva, eg)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        elif obj1.val(val) < obj2.val(val):
+                                                print("talvan fær stigið")
+                                                skiptaSpilum(eg, talva)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        else:
+                                                print("jafntefli")
                                 elif val == 4:
                                         print("fjoldi")
+                                        if obj1.val(val) > obj2.val(val):
+                                                print("eg fæ stigið")
+                                                skiptaSpilum(talva, eg)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        elif obj1.val(val) < obj2.val(val):
+                                                print("talvan fær stigið")
+                                                skiptaSpilum(eg, talva)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        else:
+                                                print("jafntefli")
                                 elif val == 5:
                                         print("laeri")
+                                        if obj1.val(val) > obj2.val(val):
+                                                print("eg fæ stigið")
+                                                skiptaSpilum(talva, eg)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        elif obj1.val(val) < obj2.val(val):
+                                                print("talvan fær stigið")
+                                                skiptaSpilum(eg, talva)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        else:
+                                                print("jafntefli")
                                 elif val == 6:
                                         print("frjosemi")
+                                        if obj1.val(val) > obj2.val(val):
+                                                print("eg fæ stigið")
+                                                skiptaSpilum(talva, eg)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        elif obj1.val(val) < obj2.val(val):
+                                                print("talvan fær stigið")
+                                                skiptaSpilum(eg, talva)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        else:
+                                                print("jafntefli")
                                 elif val == 7:
                                         print("bak")
+                                        if obj1.val(val) > obj2.val(val):
+                                                print("eg fæ stigið")
+                                                skiptaSpilum(talva, eg)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        elif obj1.val(val) < obj2.val(val):
+                                                print("talvan fær stigið")
+                                                skiptaSpilum(eg, talva)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        else:
+                                                print("jafntefli")
                                 elif val == 8:
                                         print("malir") #kveikur er op
+                                        if obj1.val(val) > obj2.val(val):
+                                                print("eg fæ stigið")
+                                                skiptaSpilum(talva, eg)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        elif obj1.val(val) < obj2.val(val):
+                                                print("talvan fær stigið")
+                                                skiptaSpilum(eg, talva)
+                                                test1 = len(talva)
+                                                test2 = len(eg)
+                                                print(test1, test2)
+                                        else:
+                                                print("jafntefli")
                                 print(eg,"\n\n" ,talva)
                         else:
                                 print("ekkert valið, veldu aftur")
