@@ -120,28 +120,7 @@ def leikur(eg, talva):
                         spilad(obj1, obj2, val, eg, talva)
 def multiplayer(eg, talva):
         pass
-
 eg = hrutaSmidur("hrutar.txt")
 talva = skipta(eg)
-'''
-print(talva)
-print("\nhin spilin\n")
-print(eg)
-'''
-############################################### skoda spilin i hvorum lista
-#print("Mín spil\n")
-#teljari = -1
-#for x in eg:
-#        teljari += 1
-#        eg[teljari].skodaNafn()
-
-#print("\nHin spilin\n")
-#teljari = -1
-#for x in talva:
-#        teljari += 1
-#        talva[teljari].skodaNafn()
-
-############################################### skoda spilin i hvorum lista
-
 print("\nleikur\n")
 leikur(eg, talva)
