@@ -70,6 +70,9 @@ def skiptaSpilum(listix, listiy):       #Tekur fremsta spilið ú lista-x og fæ
         listiy.append(listiy[0])
         listiy.remove(listiy[0])
         listix.remove(listix[0])
+def jafntefli(listix, listiy):
+        listix.remove(listix[0])
+        listiy.remove(listiy[0])
 def compare(ob1, ob2, val):
         if ob1.val(val) > ob2.val(val):
                 return 1
@@ -77,27 +80,59 @@ def compare(ob1, ob2, val):
                 return 0
         else:
                 return None
-def spilad(ob1, ob2, val, ob1list, ob2list):
+def spilad(ob1, ob2, val, ob1list, ob2list, templisti):
         utkoma = compare(ob1, ob2, val)
         if utkoma == 1:
-                print("Spilari eitt vann")
+                print("Spilari eitt vann umferðina")
                 skiptaSpilum(ob2list, ob1list)
-                print("Spilari 1:{}\nSpilari 2:{}".format(len(ob1list), len(ob2list)))
+                if len(templisti) != 0:
+                        ob1list.append(templisti[0])
+                        ob1list.append(templisti[1])
+                        templisti.remove(templisti[0])
+                        templisti.remove(templisti[0])
+                print("Spilari 1: {}\nSpilari 2: {}\nGeymd Spil: {}".format(len(ob1list), len(ob2list), len(templisti)))
+                        
+                
         elif utkoma == 0:
-                print("Spilari tvö vann")
+                print("Leikmaður tvö vann umferðina")
                 skiptaSpilum(ob1list, ob2list)
-                print("Spilari 1:{}\nSpilari 2:{}".format(len(ob1list), len(ob2list)))
+                if len(templisti) != 0:
+                        ob2list.append(templisti[0])
+                        ob2list.append(templisti[1])
+                        templisti.remove(templisti[0])
+                        templisti.remove(templisti[0])
+                print("Spilari 1: {}\nSpilari 2: {}\nGeymd Spil: {}".format(len(ob1list), len(ob2list), len(templisti)))
         else:
                 print("Jafntefli")
-                print("Spilari 1:{}\nSpilari 2:{}".format(len(ob1list), len(ob2list)))
+                templisti.append(ob1list[0])
+                templisti.append(ob2list[0])
+                jafntefli(ob1list, ob2list)
+                if len(templisti) == 0:
+                        print("Spilari 1:{}\nSpilari 2:{}".format(len(ob1list), len(ob2list)))
+                elif len(templisti) != 0:
+                        print("Spilari 1: {}\nSpilari 2: {}\nGeymd Spil: {}".format(len(ob1list), len(ob2list), len(templisti)))
+
+def sigurcheck(listi1, listi2):
+        if len(listi1) == 0:
+                return 1
+        elif len(listi2) == 0:
+                return 0
+
+        
 def leikur(eg, talva):
         spila = 0
+        listi = []
         while True:
+                if sigurcheck(eg, talva) == 1:
+                        print("\nSpilari tvö vann leikinn!")
+                        break
+                elif sigurcheck(eg, talva) == 0:
+                        print("\nSpilari eitt vann leikinn!")
+                        break
                 print("--------------------------------")
-                if spila == 0:        #eg
+                if spila == 0:
                         obj1 = eg[0]
                         obj2 = talva[0]
-                        #teljari += 1
                         obj1.skodaNafn()
                         obj1.skodaEiginleika()
                         val = input("veldu eiginleika: ")
@@ -106,8 +141,8 @@ def leikur(eg, talva):
                         if val in leyfinlegtval:
                                 print(obj1.val(val))
                                 print(obj2.val(val))
-                                print("Leikmaður eitt velur að keppa í {} lið.".format(val))
-                                spilad(obj1, obj2, val, eg, talva)
+                                print("Leikmaður eitt velur að keppa í {}. lið.\n".format(val))
+                                spilad(obj1, obj2, val, eg, talva, listi)
                         else:
                                 print("ekkert valið, veldu aftur")
                         spila = 1
@@ -116,11 +151,66 @@ def leikur(eg, talva):
                         obj2 = talva[0]
                         spila = 0
                         val = str(random.randint(1,8))
-                        print("Leikmaður tvö velur að keppa í {} lið.".format(val))
-                        spilad(obj1, obj2, val, eg, talva)
+                        print("Leikmaður tvö velur að keppa í {}. lið.\n".format(val))
+                        spilad(obj1, obj2, val, eg, talva, listi)
+
 def multiplayer(eg, talva):
-        pass
+        spila = 0
+        listi = []
+        while True:
+                if sigurcheck(eg, talva) == 1:
+                        print("\nSpilari tvö vann leikinn!")
+                        break
+                elif sigurcheck(eg, talva) == 0:
+                        print("\nSpilari eitt vann leikinn!")
+                        break
+                print("--------------------------------")
+                if spila == 0:
+                        obj1 = eg[0]
+                        obj2 = talva[0]
+                        obj1.skodaNafn()
+                        obj1.skodaEiginleika()
+                        val = input("veldu eiginleika: ")
+                        print("\n")
+                        leyfinlegtval = ["1","2","3","4","5","6","7","8"]
+                        if val in leyfinlegtval:
+                                print(obj1.val(val))
+                                print(obj2.val(val))
+                                print("Leikmaður eitt velur að keppa í {}. lið.\n".format(val))
+                                spilad(obj1, obj2, val, eg, talva, listi)
+                        else:
+                                print("ekkert valið, veldu aftur")
+                        spila = 1
+                else:                   #leikmaður 2
+                        obj1 = eg[0]
+                        obj2 = talva[0]
+                        obj1.skodaNafn()
+                        obj1.skodaEiginleika()
+                        val = input("veldu eiginleika: ")
+                        print("\n")
+                        leyfinlegtval = ["1","2","3","4","5","6","7","8"]
+                        if val in leyfinlegtval:
+                                print(obj1.val(val))
+                                print(obj2.val(val))
+                                print("Leikmaður tvö velur að keppa í {}. lið.\n".format(val))
+                                spilad(obj1, obj2, val, eg, talva, listi)
+                        else:
+                                print("ekkert valið, veldu aftur")
+                        spila = 0
+def main():
+        while True:
+                valmynd = input("Viltu spila:\n1. Einn á móti tölvu\n2. Með öðrum leikmanni á sömu tölvu\n3. Hætta við\n: ")
+                if valmynd == "1":
+                        leikur(eg, talva)
+                elif valmynd == "2":
+                        multiplayer(eg, talva)
+                elif valmynd == "3":
+                        print("Thanks anyway...")
+                        break
+                else:
+                        print("Veldu 1-3")
+                
+
 eg = hrutaSmidur("hrutar.txt")
 talva = skipta(eg)
-print("\nleikur\n")
-leikur(eg, talva)
+main()
